@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<div th:replace="admin/common/head"></div>
+	</head>
+
+	<body class="no-skin">
+
+		<th:block th:insert="admin/common/menu" th:remove="tag"></th:block>
+
+		<div class="main-container" id="main-container">
+			<th:block th:insert="admin/common/sidebar" th:remove="tag"></th:block>
+
+			<div class="main-content">
+
+			</div><!-- /.main-content -->
+
+		<th:block th:insert="admin/common/footer" th:remove="tag"></th:block>
+
+		</div><!-- /.main-container -->
+
+		<th:block th:insert="admin/common/foot" th:remove="tag"></th:block>
+	</body>
+</html>
