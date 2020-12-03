@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PlaceRepository extends JpaRepository<PlaceEntity, Long> {
-
+    PlaceEntity findPlaceEntityById(Long id);
 }

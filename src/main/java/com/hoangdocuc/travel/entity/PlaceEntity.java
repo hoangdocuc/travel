@@ -12,6 +12,15 @@ public class PlaceEntity extends BaseEntity{
     @Column(name = "content")
     private String content;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "views")
+    private Integer views;
+
+    @Column(name = "image")
+    private String image;
+
     public String getTitle() {
         return title;
     }
@@ -26,5 +35,29 @@ public class PlaceEntity extends BaseEntity{
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getViews() {
+        return views;
+    }
+
+    public void setViews(Integer views) {
+        this.views = views;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

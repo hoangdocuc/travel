@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IPlaceService {
     List<PlaceDTO> findAll();
+    void save(PlaceDTO placeDTO);
 }

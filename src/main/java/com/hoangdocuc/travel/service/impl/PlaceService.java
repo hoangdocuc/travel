@@ -8,6 +8,7 @@ import com.hoangdocuc.travel.service.IPlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,5 +29,18 @@ public class PlaceService implements IPlaceService {
             placeDTOList.add(placeConverter.toDTO(placeEntity));
         }
         return placeDTOList;
+    }
+
+    @Override
+    @Transactional
+    public void save(PlaceDTO placeDTO) {
+        PlaceEntity placeEntity = new PlaceEntity();
+        if(placeDTO.getId()!=null){
+            PlaceEntity placeEntityold = placeRepository.findPlaceEntityById(placeDTO.getId());
+            placeEntity = placeConverter.toEntity(placeDTO,placeEntityold);
+        }else {
+            placeEntity = placeConverter.toEntity(placeDTO);
+        }
+        placeRepository.save(placeEntity);
     }
 }

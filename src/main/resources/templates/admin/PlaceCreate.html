@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="admin/common/head"></div>
+</head>
+
+<body class="no-skin">
+
+<th:block th:insert="admin/common/menu" th:remove="tag"></th:block>
+
+<div class="main-container" id="main-container">
+    <th:block th:insert="admin/common/sidebar" th:remove="tag"></th:block>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <script type="text/javascript">
+                    try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+                </script>
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="#">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Forms</a>
+                    </li>
+                    <li class="active">Form Elements</li>
+                </ul><!-- /.breadcrumb -->
+            </div>
+
+            <div class="page-content">
+
+                <div class="page-header">
+                    <h1>
+                        Form Elements
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            Common form elements and layouts
+                        </small>
+                    </h1>
+                </div><!-- /.page-header -->
+                <th:block th:if="${message_insert}">
+                    <h1 style="color: red;" th:text="${message_insert}"></h1>
+                </th:block>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <form class="form-horizontal" role="form" th:action="@{/admin/place/createPlace}" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="place_name"> Tên Bài Viết(Địa điểm) </label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" id="place_name" name="place_name" placeholder="Nhập tên" class="col-xs-10 col-sm-9" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> Ảnh </label>
+
+                                <div class="col-sm-9">
+                                    <input type="file" id="place_image" name="place_image" class="col-xs-10 col-sm-9" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="place_title"> Nhập Tiêu Đề(Nội dung tóm tắt) </label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" id="place_title" name="place_title" placeholder="Nhập tiêu " class="col-xs-10 col-sm-9" />
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="place_content"> Nội dung </label>
+
+                                <div class="col-sm-9">
+                                    <textarea type="text" id="place_content" name="place_content" class="col-xs-10 col-sm-9" rows="5"></textarea>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="col-sm-12" style="text-align: center;">
+                                    <input type="submit" value="Thêm mới">
+                                    <input type="reset" value="Hủy bỏ">
+                                </div>
+                            </div>
+
+                            <div class="hr hr-24"></div>
+
+
+                        </form>
+
+
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+
+    <th:block th:insert="admin/common/footer" th:remove="tag"></th:block>
+    <div th:insert="admin/common/templates::alertMessage"></div>
+
+</div><!-- /.main-container -->
+
+<th:block th:insert="admin/common/foot" th:remove="tag"></th:block>
+</body>
+</html>
