@@ -42,9 +42,6 @@
                         </small>
                     </h1>
                 </div><!-- /.page-header -->
-                <th:block th:if="${message_insert}">
-                    <h1 style="color: red;" th:text="${message_insert}"></h1>
-                </th:block>
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
@@ -107,10 +104,10 @@
     </div><!-- /.main-content -->
 
     <th:block th:insert="admin/common/footer" th:remove="tag"></th:block>
-    <div th:insert="admin/common/templates::alertMessage"></div>
 
 </div><!-- /.main-container -->
 
 <th:block th:insert="admin/common/foot" th:remove="tag"></th:block>
+<th:block th:insert="admin/common/template" th:remove="tag"></th:block>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script th:inline="javascript">
+    $(document).ready(function() {
+        var code = /*[[${code}]]*/ 'default';
+        var message = /*[[${message}]]*/ 'default';
+        if(code==1) {
+            swal({
+                position: 'top',
+                type: 'success',
+                title: 'Thông báo',
+                text: message,
+                showConfirmButton: false,
+                timer: 3500
+            });
+        }
+        if(code==0) {
+            swal({
+                position: 'top',
+                type: 'error',
+                title: 'Thông báo',
+                text: message,
+                showConfirmButton: false,
+                timer: 3500
+            });
+        }
+    });
+</script>

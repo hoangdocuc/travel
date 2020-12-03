@@ -1,7 +1,9 @@
 package com.hoangdocuc.travel.controller.admin;
 
 import com.hoangdocuc.travel.dto.PlaceDTO;
+import com.hoangdocuc.travel.dto.MessageResponseDTO;
 import com.hoangdocuc.travel.service.IPlaceService;
+import com.hoangdocuc.travel.utils.AppUtils;
 import com.hoangdocuc.travel.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.HashMap;
@@ -23,6 +26,9 @@ public class HomeController {
 
     @Autowired
     private IPlaceService iPlaceService;
+
+    @Autowired
+    private MessageResponseDTO messageResponseDTO;
 
     @GetMapping(value = {"","/","home"})
     public String home(Model model, Principal principal){
@@ -40,8 +46,9 @@ public class HomeController {
 
     //create a news
     @PostMapping(value = {"/place/createPlace"})
-    public String createPlaceNew(Model model,@RequestParam HashMap<String, String> reqParams,
-                                 @RequestParam("place_image") MultipartFile image){
+    public String createPlaceNew(Model model, @RequestParam HashMap<String, String> reqParams,
+                                 @RequestParam("place_image") MultipartFile image,
+                                 RedirectAttributes redirectAttributes){
 
         //Get Param
         String place_name = reqParams.get("place_name");
@@ -61,7 +68,7 @@ public class HomeController {
         iPlaceService.save(placeDTO);
 
         //message
-        model.addAttribute("message_insert","Thêm thành công");
+        messageResponseDTO.insertMessage(model,"Thêm thành công",AppUtils.successCode);
         return "admin/PlaceCreate";
     }
 
