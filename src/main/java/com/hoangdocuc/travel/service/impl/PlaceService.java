@@ -32,6 +32,12 @@ public class PlaceService implements IPlaceService {
     }
 
     @Override
+    public PlaceDTO findById(Long id) {
+        PlaceEntity placeEntity = placeRepository.findPlaceEntityById(id);
+        return placeConverter.toDTO(placeEntity);
+    }
+
+    @Override
     @Transactional
     public void save(PlaceDTO placeDTO) {
         PlaceEntity placeEntity = new PlaceEntity();

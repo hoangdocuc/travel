@@ -12,6 +12,9 @@ public class PlaceEntity extends BaseEntity{
     @Column(name = "content")
     private String content;
 
+    @Column(name = "fileword")
+    private String fileword;
+
     @Column(name = "name")
     private String name;
 
@@ -59,5 +62,13 @@ public class PlaceEntity extends BaseEntity{
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getFileword() {
+        return fileword;
+    }
+
+    public void setFileword(String fileword) {
+        this.fileword = fileword;
     }
 }

@@ -6,6 +6,7 @@ public class PlaceDTO extends BaseDTO {
     private String image;
     private String title;
     private String content;
+    private String fileword;
     private Integer views;
 
     public String getTitle() {
@@ -38,6 +39,14 @@ public class PlaceDTO extends BaseDTO {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getFileword() {
+        return fileword;
+    }
+
+    public void setFileword(String fileword) {
+        this.fileword = fileword;
     }
 
     public Integer getViews() {

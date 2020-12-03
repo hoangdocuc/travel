@@ -45,12 +45,13 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <form id="formPlace" class="form-horizontal" role="form" th:action="@{/admin/place/createPlace}" method="post" enctype="multipart/form-data">
+                        <form id="formPlace" class="form-horizontal" role="form" th:action="@{/admin/place/updatePlace}" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="place_id" th:value="${placeObject.id}"/>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="place_name"> Tên Bài Viết(Địa điểm) </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="place_name" name="place_name" placeholder="Nhập tên" class="col-xs-10 col-sm-9" />
+                                    <input type="text" id="place_name" name="place_name" placeholder="Nhập tên" class="col-xs-10 col-sm-9" th:value="${placeObject.name}" />
                                 </div>
 
                             </div>
@@ -60,6 +61,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="file" id="place_image" name="place_image" class="col-xs-10 col-sm-9" />
+                                    <a id="imageLabel" href="#" target="_blank" th:text="${placeObject.image}"></a>
                                 </div>
 
                             </div>
@@ -68,7 +70,7 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="place_title"> Tiêu Đề(Nội dung tóm tắt) </label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" id="place_title" name="place_title" placeholder="Nhập tiêu " class="col-xs-10 col-sm-9" />
+                                    <input type="text" id="place_title" name="place_title" placeholder="Nhập tiêu " class="col-xs-10 col-sm-9" th:value="${placeObject.title}" />
                                 </div>
 
                             </div>
@@ -77,7 +79,7 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="place_content"> Nội dung </label>
 
                                 <div class="col-sm-9">
-                                    <textarea type="text" id="place_content" name="place_content" class="col-xs-10 col-sm-9" rows="5"></textarea>
+                                    <textarea type="text" id="place_content" name="place_content" class="col-xs-10 col-sm-9" rows="5"><th:block th:text="${placeObject.content}"></th:block></textarea>
                                 </div>
 
                             </div>
@@ -86,6 +88,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="file" id="place_word" name="place_word" class="col-xs-10 col-sm-9" />
+                                    <a id="wordLabel" href="#" target="_blank" th:text="${placeObject.fileword}"></a>
                                 </div>
 
                             </div>
@@ -95,7 +98,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-12" style="text-align: center;">
-                                    <button type="button" onclick="return createNew()">Thêm mới</button>
+                                    <button type="button" onclick="return createNew()">Cập nhật</button>
                                     <input type="reset" value="Hủy bỏ">
                                 </div>
                             </div>
@@ -178,14 +181,6 @@
                 });
                 return false;
             }
-        } else {
-            swal({
-                position : 'top',
-                icon : 'error',
-                title : 'Thông báo',
-                text : 'File image không  được để trống'
-            });
-            return false;
         }
 
         if($('#place_title').val()==""){
@@ -217,15 +212,6 @@
                 });
                 return false;
             }
-        }
-        if($('#place_content').val()=="" && $('#place_word')[0].files[0] == null){
-            swal({
-                position : 'top',
-                icon : 'error',
-                title : 'Thông báo',
-                text : 'Nhập nội dung hoặc tải file .docx lên'
-            });
-            return false;
         }
 
 

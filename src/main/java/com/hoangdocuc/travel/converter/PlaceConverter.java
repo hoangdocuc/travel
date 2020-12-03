@@ -12,6 +12,7 @@ public class PlaceConverter {
         placeEntity.setName(placeDTO.getName());
         placeEntity.setTitle(placeDTO.getTitle());
         placeEntity.setContent(placeDTO.getContent());
+        placeEntity.setFileword(placeDTO.getFileword());
         placeEntity.setImage(placeDTO.getImage());
         placeEntity.setViews(placeDTO.getViews());
         return  placeEntity;
@@ -21,6 +22,7 @@ public class PlaceConverter {
         placeEntity.setName(placeDTO.getName());
         placeEntity.setTitle(placeDTO.getTitle());
         placeEntity.setContent(placeDTO.getContent());
+        placeEntity.setFileword(placeDTO.getFileword());
         placeEntity.setImage(placeDTO.getImage());
         placeEntity.setViews(placeDTO.getViews());
         return  placeEntity;
@@ -31,6 +33,7 @@ public class PlaceConverter {
         placeDTO.setId(placeEntity.getId());
         placeDTO.setTitle(placeEntity.getTitle());
         placeDTO.setContent(placeEntity.getContent());
+        placeDTO.setFileword(placeEntity.getFileword());
         placeDTO.setName(placeEntity.getName());
         placeDTO.setImage(placeEntity.getImage());
         placeDTO.setViews(placeEntity.getViews());
